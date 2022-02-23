@@ -1,0 +1,35 @@
+* {
+  margin: 0%;
+  padding: 0%;
+  box-sizing: border-box;
+}
+
+.Home {
+  display: flex;
+  flex-direction: column;
+  padding: 10px;
+}
+.Card {
+  background-color: red;
+  padding: 10px;
+  height: 100%;
+  align-items: center;
+  text-align: center;
+}
+.Header {
+  display: flex;
+  justify-content: space-between;
+  width: fit-content;
+  margin-left: 500px;
+  padding: 10px;
+  border-bottom: 0.1px solid rgb(97, 64, 64);
+}
+.nav-links {
+  display: flex;
+  justify-content: space-between;
+  margin: 0 1rem;
+}
+.nav-links li {
+  list-style-type: none;
+  padding: 2px 8px;
+}
