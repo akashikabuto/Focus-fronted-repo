@@ -1,5 +1,6 @@
 import Pomodoro from './Pomodoro';
 import Header from '../components/Header';
+import AddTask from './AddTask';
 
 function Card() {
   return (
@@ -13,6 +14,7 @@ function Card() {
         </div>
         <Pomodoro />
       </div>
+      <AddTask />
     </div>
   );
 }
