@@ -39,7 +39,6 @@ that's it , these are the steps
 - Sign up and login
 - Start a task
 - Pause
-- Long break
 
 ## Technologies used
 
