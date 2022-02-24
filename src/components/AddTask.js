@@ -1,6 +1,6 @@
 import React from 'react';
 //
-import { FaEllipsisV } from "react-icons/fa";
+import { FaEllipsisV, FaPlusCircle } from "react-icons/fa";
 
 
 function AddTask() {
@@ -16,7 +16,10 @@ function AddTask() {
           </div>
         </form>
       </div>
-
+      <div className='add-task-button'>
+        <FaPlusCircle color='white' />
+        <p>Add task</p>
+      </div>
     </div>
   );
 }
