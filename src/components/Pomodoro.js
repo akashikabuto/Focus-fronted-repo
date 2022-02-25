@@ -1,19 +1,21 @@
+import { switchToBreak } from '../Redux/actions/Tasks';
 import { useRef, useState } from 'react';
 import Countdown from 'react-countdown';
+import { useDispatch } from 'react-redux';
+
+
+//1500000
 
 
 function Pomodoro() {
 
-
   const initialState = {
     isCounting: false,
-    date: Date.now() + 1500000
+    date: Date.now() + 5000
   };
-
+  const dispatch = useDispatch();
   const countDown = useRef(null);
-
   const [state, setState] = useState(initialState);
-
 
   const toogle = () => {
     if (!(state.isCounting)) {
@@ -26,17 +28,22 @@ function Pomodoro() {
     }
   };
 
+  const onComplete = () => {
+    dispatch(switchToBreak());
+  };
 
-
+  console.log("date", state);
 
 
   return (
     <div className='card-items' >
       <Countdown date={state.date} autoStart={false} className="countdown"
         controlled={false}
-        ref={countDown} />
+        ref={countDown}
+        onComplete={onComplete}
+      />
       {state.isCounting ? <button className='start-button' onClick={() => toogle()}  >Pause</button>
-        : <button className='start-button' onClick={() => toogle()}  >Start</button>
+        : <button className='start-button-pomodoro' onClick={() => toogle()}  >Start</button>
       }
     </div>
   );

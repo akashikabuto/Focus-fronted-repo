@@ -4,7 +4,7 @@ function ShortBreak() {
   return (
     <div className='card-items' >
       <Countdown date={Date.now() + 1500000} autoStart={false} className="countdown" />
-      <button className='start-button' >Start</button>
+      <button className='start-button-short-break' >Start</button>
     </div>
 
   );
