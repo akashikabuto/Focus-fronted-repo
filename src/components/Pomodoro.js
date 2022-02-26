@@ -6,7 +6,6 @@ import { useDispatch } from 'react-redux';
 
 //1500000
 
-
 function Pomodoro() {
 
   const initialState = {
@@ -32,9 +31,6 @@ function Pomodoro() {
     dispatch(switchToBreak());
   };
 
-  console.log("date", state);
-
-
   return (
     <div className='card-items' >
       <Countdown date={state.date} autoStart={false} className="countdown"
@@ -42,7 +38,7 @@ function Pomodoro() {
         ref={countDown}
         onComplete={onComplete}
       />
-      {state.isCounting ? <button className='start-button' onClick={() => toogle()}  >Pause</button>
+      {state.isCounting ? <button className='start-button-pomodoro' onClick={() => toogle()}  >Pause</button>
         : <button className='start-button-pomodoro' onClick={() => toogle()}  >Start</button>
       }
     </div>

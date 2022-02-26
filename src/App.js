@@ -13,7 +13,6 @@ function App() {
         </Switch>
       </Router>
     </Provider>
-
   );
 }
 
