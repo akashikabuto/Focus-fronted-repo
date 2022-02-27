@@ -22,15 +22,25 @@ export const switchToPomodoro = () => async (dispatch, getState) => {
   });
 };
 
-export const switchToLongBreak = () => async (dispatch, getState) => {
-  return dispatch({
-    type: actionTypes.LONG_BREAK
-  });
-};
 
 export const switchFromLongBreak = () => async (dispatch, getState) => {
   return dispatch({
     type: actionTypes.FROM_LONG_BREAK
   });
+};
+
+export const SeeLoginContainer = () => async (dispatch, getState) => {
+  const { tasks } = getState();
+  const status = tasks.seeLogin;
+  if (!status) {
+    return dispatch({
+      type: actionTypes.SEE_LOGIN
+    });
+  }
+  else {
+    return dispatch({
+      type: actionTypes.UN_SEE_LOGIN
+    });
+  }
 };
 

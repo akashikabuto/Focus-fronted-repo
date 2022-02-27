@@ -32,7 +32,7 @@ function Pomodoro() {
   };
 
   return (
-    <div className='card-items' >
+    <div className='card-items'>
       <Countdown date={state.date} autoStart={false} className="countdown"
         controlled={false}
         ref={countDown}

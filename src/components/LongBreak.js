@@ -31,14 +31,15 @@ function LongBreak() {
   //rgb(69, 124, 163)
 
   return (
-    <div className='card-items' >
+    <div className='card-items'>
       <Countdown date={state.date} autoStart={false}
         controlled={false}
         ref={countDown}
         onComplete={onComplete}
         className="countdown" />
-      {state.isCounting ? <button className='start-button-short-break' onClick={() => toogle()}  >Pause</button>
-        : <button className='start-button-short-break' onClick={() => toogle()}  >Start</button>}
+      {state.isCounting ? <button className='start-button-short-break' onClick={() => toogle()}>Pause</button>
+        : <button className='start-button-short-break' onClick={() => toogle()}  >Start</button>
+      }
     </div>
   );
 }

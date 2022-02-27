@@ -1,10 +1,14 @@
-import { useEffect, useState } from 'react';
-import Pomodoro from './Pomodoro';
+import { useEffect, useState, lazy, Suspense } from 'react';
 import Header from '../components/Header';
-import AddTask from './AddTask';
-import ShortBreak from './ShortBreak';
-import LongBreak from './LongBreak';
 import { useSelector } from 'react-redux';
+import Login from './Login';
+
+const ShortBreakComponent = lazy(() => import('./ShortBreak'));
+const PomodoroCoponent = lazy(() => import('./Pomodoro'));
+const LongBreakComponent = lazy(() => import('./LongBreak'));
+const AddTaskComponent = lazy(() => import('./AddTask'));
+
+
 
 function Card() {
 
@@ -12,7 +16,6 @@ function Card() {
   const [isShortBreak, setIsShortBreak] = useState(false);
   const [_count, _setCount] = useState('');
   const [_long, _setLong] = useState(false);
-
 
   const setTheState = () => {
     if (shortBreak) {
@@ -52,19 +55,28 @@ function Card() {
   }, [shortBreak, count]);
 
 
+
+
   return (
-    <div className={isSetColor}>
-      <Header />
-      <div className='card-container' >
-        <div className='card-nav-bar' >
-          {!(isShortBreak) && (!_long) ? <p className='wrapper' >Pomodoro</p> : <p >Pomodoro</p>}
-          {isShortBreak ? <p className='wrapper'>Short break</p> : <p>Short break</p>}
-          {_long ? <p className='wrapper'>Long break</p> : <p>Long break</p>}
+    <>
+      <Login />
+      <div className={isSetColor}>
+        <Header />
+        <div className='card-container' >
+          <div className='card-nav-bar' >
+            {!(isShortBreak) && (!_long) ? <p className='wrapper' >Pomodoro</p> : <p>Pomodoro</p>}
+            {isShortBreak ? <p className='wrapper'>Short break</p> : <p>Short break</p>}
+            {_long ? <p className='wrapper'>Long break</p> : <p>Long break</p>}
+          </div>
+          <Suspense fallback={<div className='loader' >loading.......</div>} >
+            {isShortBreak ? <ShortBreakComponent /> : (_long ? <LongBreakComponent /> : <PomodoroCoponent />)}
+          </Suspense>
         </div>
-        {isShortBreak ? <ShortBreak /> : (_long ? <LongBreak /> : <Pomodoro />)}
-      </div>
-      <AddTask isShort={isShortBreak} round={_count} long={_long} />
-    </div>
+        <Suspense fallback={<div className='loader' >loading.......</div>} >
+          <AddTaskComponent isShort={isShortBreak} round={_count} long={_long} />
+        </Suspense>
+      </div></>
+
   );
 }
 

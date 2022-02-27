@@ -1,16 +1,22 @@
+import { lazy, Suspense } from 'react';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import './App.css';
-import Home from './pages/Home';
 import { Provider } from 'react-redux';
 import { store } from './Redux';
+
+const HomePage = lazy(() => import('./pages/Home'));
+const NotFoundPage = lazy(() => import('./pages/NotFound'));
 
 function App() {
   return (
     <Provider store={store} >
       <Router>
-        <Switch>
-          <Route path='/' component={Home} exact />
-        </Switch>
+        <Suspense fallback={<div className='loader' >loading.......</div>} >
+          <Switch>
+            <Route path='/' component={HomePage} exact />
+            <Route path="*" component={NotFoundPage} exact />
+          </Switch>
+        </Suspense>
       </Router>
     </Provider>
   );

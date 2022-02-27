@@ -40,7 +40,8 @@ function ShortBreak() {
         onComplete={onComplete}
         className="countdown" />
       {state.isCounting ? <button className='start-button-short-break' onClick={() => toogle()}  >Pause</button>
-        : <button className='start-button-short-break' onClick={() => toogle()}  >Start</button>}
+        : <button className='start-button-short-break' onClick={() => toogle()}  >Start</button>
+      }
     </div>
   );
 }

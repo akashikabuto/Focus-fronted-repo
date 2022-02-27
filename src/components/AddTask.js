@@ -16,7 +16,6 @@ function AddTask({ isShort, round, long }) {
     return _inputStyle;
   }
 
-
   const setColor = setInputColor();
 
   return (
