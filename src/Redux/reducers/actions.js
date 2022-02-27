@@ -3,7 +3,6 @@ import * as actionTypes from '../actions/actionTypes';
 const initialState = {
   shortBreak: false,
   count: 0,
-  seeLogin: false
 };
 
 
@@ -34,16 +33,6 @@ export const ActionReducer = (state = initialState, { type, payload }) => {
         ...state,
         shortBreak: false,
         count: 0
-      };
-    case actionTypes.SEE_LOGIN:
-      return {
-        ...state,
-        seeLogin: true
-      };
-    case actionTypes.UN_SEE_LOGIN:
-      return {
-        ...state,
-        seeLogin: false
       };
     default:
       return state;

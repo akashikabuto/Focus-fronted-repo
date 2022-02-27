@@ -1,15 +1,15 @@
 import { FaUserCircle } from "react-icons/fa";
 import { FaChartBar } from "react-icons/fa";
-import { useDispatch } from "react-redux";
-import { SeeLoginContainer } from "../Redux/actions/Tasks";
+import { useHistory } from "react-router-dom";
+
 
 function Header() {
 
-  const dispatch = useDispatch();
+  const history = useHistory();
 
-  const toggleLogin = () => {
-    dispatch(SeeLoginContainer());
-  };
+  function goTologin() {
+    history.push('/login');
+  }
 
   return (
     <div className='Header'>
@@ -24,7 +24,7 @@ function Header() {
         <li>
           <div className="nav-links-items" >
             <FaUserCircle color="white" />
-            <p onClick={() => toggleLogin()} >Login</p>
+            <p onClick={() => goTologin()} >Login</p>
           </div>
         </li>
       </ul>

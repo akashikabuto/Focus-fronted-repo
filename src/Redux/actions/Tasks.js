@@ -29,18 +29,4 @@ export const switchFromLongBreak = () => async (dispatch, getState) => {
   });
 };
 
-export const SeeLoginContainer = () => async (dispatch, getState) => {
-  const { tasks } = getState();
-  const status = tasks.seeLogin;
-  if (!status) {
-    return dispatch({
-      type: actionTypes.SEE_LOGIN
-    });
-  }
-  else {
-    return dispatch({
-      type: actionTypes.UN_SEE_LOGIN
-    });
-  }
-};
 

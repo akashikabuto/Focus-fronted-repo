@@ -6,6 +6,7 @@ import { store } from './Redux';
 
 const HomePage = lazy(() => import('./pages/Home'));
 const NotFoundPage = lazy(() => import('./pages/NotFound'));
+const LoginPage = lazy(() => import('./pages/LoginPage'));
 
 function App() {
   return (
@@ -14,6 +15,7 @@ function App() {
         <Suspense fallback={<div className='loader' >loading.......</div>} >
           <Switch>
             <Route path='/' component={HomePage} exact />
+            <Route path='/login' component={LoginPage} exact />
             <Route path="*" component={NotFoundPage} exact />
           </Switch>
         </Suspense>
