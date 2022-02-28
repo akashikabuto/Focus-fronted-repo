@@ -12,10 +12,16 @@ const AddTaskComponent = lazy(() => import('./AddTask'));
 
 function Card() {
 
+  const pomodoroTime = localStorage.getItem('pomodoroTime');
+  const shortTime = localStorage.getItem('shortTime');
+  const longTime = localStorage.getItem('longTime');
+
   const { shortBreak, count } = useSelector(store => store.tasks);
   const [isShortBreak, setIsShortBreak] = useState(false);
   const [_count, _setCount] = useState('');
   const [_long, _setLong] = useState(false);
+
+
 
   const setTheState = () => {
     if (shortBreak) {
@@ -52,7 +58,8 @@ function Card() {
     setTheState();
     getCountNumber();
     //eslint-disable-next-line
-  }, [shortBreak, count]);
+  }, [shortBreak, count, pomodoroTime, longTime, shortTime]);
+
 
 
 
@@ -67,7 +74,7 @@ function Card() {
           {_long ? <p className='wrapper'>Long break</p> : <p>Long break</p>}
         </div>
         <Suspense fallback={<div className='loader' >loading.......</div>} >
-          {isShortBreak ? <ShortBreakComponent /> : (_long ? <LongBreakComponent /> : <PomodoroCoponent />)}
+          {isShortBreak ? <ShortBreakComponent shortBreak={shortTime} /> : (_long ? <LongBreakComponent longBreak={longTime} /> : <PomodoroCoponent pomodoro={pomodoroTime} />)}
         </Suspense>
       </div>
       <Suspense fallback={<div className='loader' >loading.......</div>} >

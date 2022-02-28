@@ -10,6 +10,9 @@ function Header() {
   function goTologin() {
     history.push('/login');
   }
+  function goToSettings() {
+    history.push('/settings');
+  }
 
   return (
     <div className='Header'>
@@ -18,7 +21,7 @@ function Header() {
         <li>
           <div className="nav-links-items" >
             <FaChartBar color="white" />
-            <p>Report</p>
+            <p onClick={() => goToSettings()} >Settings</p>
           </div>
         </li>
         <li>

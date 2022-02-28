@@ -7,6 +7,7 @@ import { store } from './Redux';
 const HomePage = lazy(() => import('./pages/Home'));
 const NotFoundPage = lazy(() => import('./pages/NotFound'));
 const LoginPage = lazy(() => import('./pages/LoginPage'));
+const SettingPage = lazy(() => import('./pages/Settings'));
 
 function App() {
   return (
@@ -16,6 +17,7 @@ function App() {
           <Switch>
             <Route path='/' component={HomePage} exact />
             <Route path='/login' component={LoginPage} exact />
+            <Route path='/settings' component={SettingPage} exact />
             <Route path="*" component={NotFoundPage} exact />
           </Switch>
         </Suspense>

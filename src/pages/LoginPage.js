@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { useHistory } from "react-router-dom";
 
 export default function LoginPage() {
 
@@ -11,12 +12,18 @@ export default function LoginPage() {
     else setIsSignUp(false);
   }
 
+  const history = useHistory();
+
+  function goToHome() {
+    history.push('/');
+  }
+
   return (
     <div className='login-container' >
       {isSignUp ? (
         <>
           <div>
-            <h3 className='focus-title' >Focus</h3>
+            <h3 className='focus-title' onClick={() => goToHome()}  >Focus</h3>
             <p className='loginOrSignUp-title' >Register</p>
           </div>
           <div className='sub-container' >
@@ -41,7 +48,7 @@ export default function LoginPage() {
       ) : (
         <>
           <div>
-            <h3 className='focus-title' >Focus</h3>
+            <h3 className='focus-title' onClick={() => goToHome()}  >Focus</h3>
             <p className='loginOrSignUp-title' >Login</p>
           </div>
           <div className='sub-container' >

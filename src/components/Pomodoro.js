@@ -1,17 +1,36 @@
 import { switchToBreak } from '../Redux/actions/Tasks';
-import { useRef, useState } from 'react';
+import { useRef, useState, useEffect } from 'react';
 import Countdown from 'react-countdown';
 import { useDispatch } from 'react-redux';
 
 
 //1500000
 
-function Pomodoro() {
+function Pomodoro({ pomodoro }) {
+
+  let k = parseInt(pomodoro);
+
+  let pomodoroValue = Date.now() + k;
+
+  console.log("state", Date.now() + 5000);
+  console.log("date", pomodoroValue);
+
+
 
   const initialState = {
     isCounting: false,
     date: Date.now() + 5000
   };
+
+  function getTime() {
+    setState({ ...state, date: pomodoroValue });
+  }
+
+  useEffect(() => {
+    getTime();
+    //eslint-disable-next-line
+  }, []);
+
   const dispatch = useDispatch();
   const countDown = useRef(null);
   const [state, setState] = useState(initialState);
@@ -30,6 +49,7 @@ function Pomodoro() {
   const onComplete = () => {
     dispatch(switchToBreak());
   };
+
 
   return (
     <div className='card-items'>

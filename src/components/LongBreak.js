@@ -1,11 +1,15 @@
-import { useRef, useState } from 'react';
+import { useRef, useState, useEffect } from 'react';
 import Countdown from 'react-countdown';
 import { useDispatch } from 'react-redux';
 import { switchFromLongBreak } from '../Redux/actions/Tasks';
 
 
 
-function LongBreak() {
+function LongBreak({ longBreak }) {
+
+  let k = parseInt(longBreak);
+
+  let longTimeValue = Date.now() + k;
 
   const dispatch = useDispatch();
   const initialState = {
@@ -14,6 +18,15 @@ function LongBreak() {
   };
   const countDown = useRef(null);
   const [state, setState] = useState(initialState);
+
+  function getTime() {
+    setState({ ...state, date: longTimeValue });
+  }
+
+  useEffect(() => {
+    getTime();
+    //eslint-disable-next-line
+  }, []);
   const toogle = () => {
     if (!(state.isCounting)) {
       setState({ ...state, isCounting: true });
