@@ -11,11 +11,10 @@ function ShortBreak({ shortBreak }) {
 
   let shortTimeValue = Date.now() + k;
 
-
   const dispatch = useDispatch();
   const initialState = {
     isCounting: false,
-    date: Date.now() + 5000
+    date: Date.now() + shortTimeValue
   };
 
   function getTime() {

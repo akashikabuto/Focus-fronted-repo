@@ -14,7 +14,7 @@ function LongBreak({ longBreak }) {
   const dispatch = useDispatch();
   const initialState = {
     isCounting: false,
-    date: Date.now() + 10000
+    date: Date.now() + longTimeValue
   };
   const countDown = useRef(null);
   const [state, setState] = useState(initialState);

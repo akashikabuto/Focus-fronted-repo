@@ -19,7 +19,7 @@ function Pomodoro({ pomodoro }) {
 
   const initialState = {
     isCounting: false,
-    date: Date.now() + 5000
+    date: Date.now() + pomodoroValue
   };
 
   function getTime() {

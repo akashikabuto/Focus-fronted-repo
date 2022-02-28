@@ -1,4 +1,4 @@
-import { lazy, Suspense } from 'react';
+import { lazy, Suspense, useEffect } from 'react';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import './App.css';
 import { Provider } from 'react-redux';
@@ -10,6 +10,17 @@ const LoginPage = lazy(() => import('./pages/LoginPage'));
 const SettingPage = lazy(() => import('./pages/Settings'));
 
 function App() {
+
+  function setDefaultTime() {
+    localStorage.setItem('pomodoroTime', 5000);
+    localStorage.setItem('shortTime', 5000);
+    localStorage.setItem('longTime', 10000);
+  }
+
+  useEffect(() => {
+    setDefaultTime();
+  }, []);
+
   return (
     <Provider store={store} >
       <Router>
