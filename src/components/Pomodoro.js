@@ -12,11 +12,6 @@ function Pomodoro({ pomodoro }) {
 
   let pomodoroValue = Date.now() + k;
 
-  console.log("state", Date.now() + 5000);
-  console.log("date", pomodoroValue);
-
-
-
   const initialState = {
     isCounting: false,
     date: Date.now() + pomodoroValue

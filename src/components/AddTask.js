@@ -1,8 +1,10 @@
+import { useEffect, useState } from "react";
 import { FaEllipsisV, FaPlusCircle } from "react-icons/fa";
 
 
 function AddTask({ isShort, round, long }) {
 
+  const token = localStorage.getItem('token');
 
   function setInputColor() {
     let _inputStyle;
@@ -15,6 +17,17 @@ function AddTask({ isShort, round, long }) {
     else _inputStyle = 'pomodoro-add-input';
     return _inputStyle;
   }
+
+  const [Token, setToken] = useState('');
+
+  function seeToken() {
+    setToken(token);
+  }
+
+  useEffect(() => {
+    seeToken();
+    //eslint-disable-next-line
+  }, [token]);
 
   const setColor = setInputColor();
 
@@ -30,10 +43,15 @@ function AddTask({ isShort, round, long }) {
           </div>
         </form>
       </div>
-      <div className='add-task-button'>
+      {!Token ? <button className='add-task-button' disabled >
         <FaPlusCircle color='white' className='add-icon' />
-        <p>Add task</p>
-      </div>
+        <p>Login in to add task</p>
+      </button> :
+        <button className='add-task-button'>
+          <FaPlusCircle color='white' className='add-icon' />
+          <p>Add task</p>
+        </button>}
+
     </div>
   );
 }
