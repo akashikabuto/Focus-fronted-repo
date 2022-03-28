@@ -1,20 +1,13 @@
-import Card from '../components/Card';
-import Info from '../components/Info';
-import Footer from '../components/Footer';
+import { lazy, Suspense } from 'react';
 
+const CardComponent = lazy(() => import('../components/Card'));
 
 function Home() {
   return (
     <div className='Home' >
-      <div className='first-panel' >
-        <Card />
-      </div>
-      <div className='middle-panel'  >
-        <Info />
-      </div>
-      <div className='last-panel'>
-        <Footer />
-      </div>
+      <Suspense fallback={<div className='loader' >loading.......</div>} >
+        <CardComponent />
+      </Suspense>
     </div>
   );
 }
