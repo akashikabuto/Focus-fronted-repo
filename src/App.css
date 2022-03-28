@@ -311,3 +311,7 @@
   text-align: center;
   align-items: center;
 }
+.all-tasks {
+  height: 300px;
+  overflow-y: auto;
+}

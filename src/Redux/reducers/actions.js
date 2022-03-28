@@ -3,6 +3,8 @@ import * as actionTypes from '../actions/actionTypes';
 const initialState = {
   shortBreak: false,
   count: 0,
+  allTasks: [],
+  Authorization: true
 };
 
 
@@ -33,6 +35,16 @@ export const ActionReducer = (state = initialState, { type, payload }) => {
         ...state,
         shortBreak: false,
         count: 0
+      };
+    case actionTypes.ALL_TASKS:
+      return {
+        ...state,
+        allTasks: payload
+      };
+    case actionTypes.NO_AUTH:
+      return {
+        ...state,
+        Authorization: false
       };
     default:
       return state;
